@@ -18,16 +18,19 @@ def convert_files():
         if ".txt" not in file:
             print(COLOR_RED + "Input is not a file! Please input txt files." + COLOR_RESET)
             exit()
-    for i in filepath: 
+    for i in filepath:
         if "runcut.txt" in i:
-            runcut_file = i 
+            runcut_file = i
             make_new_runcut(runcut_file)
-        if "stop_times.txt" in i: 
+        elif "stop_times.txt" in i:
             stop_times_file = i
             make_new_stop_times(stop_times_file)
-        if "trips.txt" in i: 
+        elif "trips.txt" in i:
             trips_file = i
             make_new_trips(trips_file)
+        else:
+            print(COLOR_RED + "No compatible file found" + COLOR_RESET)
+            exit()
 
 def make_new_runcut(runcut_file):
     with open(runcut_file, "rb") as file_raw:
